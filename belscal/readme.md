@@ -1,0 +1,1 @@
+Project has been created with command **sbt new scala/scala-seed.g8**
