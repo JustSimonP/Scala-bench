@@ -11,3 +11,11 @@ java 13 benchmarks
 [info] Bench.testWithView                   thrpt   50  716,945 ´ 7,104   ops/s
 [info] Bench.testWithoutView                thrpt   50  685,747 ´ 7,205   ops/s
 [info] Bench.testWithoutViewWithConversion  thrpt   50  535,259 ´ 7,316   ops/s
+
+
+[info] Benchmark                                    Mode  Cnt  Score   Error   Units
+[info] MonadicWrappersChecker.testFlatten          thrpt   40  2,631 ´┐Ż 0,058  ops/ms
+[info] MonadicWrappersChecker.testGetOrElse        thrpt   40  2,617 ´┐Ż 0,076  ops/ms
+[info] MonadicWrappersChecker.testIfElse           thrpt   40  3,184 ´┐Ż 0,050  ops/ms
+[info] MonadicWrappersChecker.testPatternMatching  thrpt   40  2,947 ´┐Ż 0,046  ops/ms
+
