@@ -1,19 +1,47 @@
 package example
 
-import org.openjdk.jmh.annotations.{Benchmark, BenchmarkMode, Fork, Measurement, Mode, Warmup}
-import org.openjdk.jmh.infra.Blackhole
+import org.openjdk.jmh.annotations.{Benchmark, BenchmarkMode, Measurement, Mode, OutputTimeUnit, Warmup}
+
+import java.util.concurrent.TimeUnit
 
 class Bench {
 
   @Benchmark
-  @BenchmarkMode(Array(Mode.AverageTime))
-  @Fork(value = 2)
-  @Warmup(iterations = 2)
-  @Measurement(iterations = 2)
-  def testMethod(blackHole: Blackhole): Double = {
-    val list: List[Int] = List.range(1, 1000)
-    val sum: Double = list.sum
-    blackHole.consume(sum)
-    sum
+  @BenchmarkMode(Array(Mode.Throughput))
+  @Warmup(iterations = 5)
+  @Measurement(iterations = 10)
+  @OutputTimeUnit(TimeUnit.MILLISECONDS)
+  def methodStandardFilter(): IndexedSeq[Int] = {
+    (1 to 50_000).filter(_ % 2 != 0).map(_ +2)
   }
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.Throughput))
+  @Warmup(iterations = 5)
+  @Measurement(iterations = 10)
+  @OutputTimeUnit(TimeUnit.MILLISECONDS)
+  def methodWithFilter(): IndexedSeq[Int] = {
+    (1 to 50_000).withFilter(_ % 2 != 0).map(_ +2)
+  }
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.Throughput))
+  @Warmup(iterations = 5)
+  @Measurement(iterations = 10)
+  def testWithView(): List[Int] = {
+    (1 to 50_000).view.map(_*2).zipWithIndex.map{x => x._1 + x._2 }.toList}
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.Throughput))
+  @Warmup(iterations = 5)
+  @Measurement(iterations = 10)
+  def testWithoutView(): IndexedSeq[Int] = {
+    (1 to 50_000).map(_*2).zipWithIndex.map{x => x._1 + x._2 }}
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.Throughput))
+  @Warmup(iterations = 5)
+  @Measurement(iterations = 10)
+  def testWithoutViewWithConversion(): List[Int] = {
+    (1 to 50_000).map(_*2).zipWithIndex.map{x => x._1 + x._2 }.toList}
 }
