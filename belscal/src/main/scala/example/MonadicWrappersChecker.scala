@@ -9,19 +9,19 @@ class MonadicWrappersChecker {
     val generatedOptions: Seq[Option[Int]] = (1 to 50_000).map { value => {if (value % 2 != 0) Option(value) else None}}
 
   @Benchmark
-  @Warmup(iterations = 5)
+  @Warmup(iterations = 3)
   @Measurement(iterations = 8)
   @OutputTimeUnit(TimeUnit.MILLISECONDS)
-  @BenchmarkMode(Array(Mode.Throughput))
+  @BenchmarkMode(Array(Mode.AverageTime))
   def testFlatten() :Seq[Int] = {
     generatedOptions.flatten
   }
 
   @Benchmark
-  @Warmup(iterations = 5)
+  @Warmup(iterations = 3)
   @Measurement(iterations = 8)
   @OutputTimeUnit(TimeUnit.MILLISECONDS)
-  @BenchmarkMode(Array(Mode.Throughput))
+  @BenchmarkMode(Array(Mode.AverageTime))
   def testPatternMatching() :Seq[Int] = {
     generatedOptions.map {
       case Some(value) => value
@@ -30,10 +30,10 @@ class MonadicWrappersChecker {
   }
 
   @Benchmark
-  @Warmup(iterations = 5)
+  @Warmup(iterations = 3)
   @Measurement(iterations = 8)
   @OutputTimeUnit(TimeUnit.MILLISECONDS)
-  @BenchmarkMode(Array(Mode.Throughput))
+  @BenchmarkMode(Array(Mode.AverageTime))
   def testIfElse() :Seq[Int] = {
     generatedOptions.map { x => {
       if (x.isDefined) {
@@ -43,10 +43,10 @@ class MonadicWrappersChecker {
   }
 
   @Benchmark
-  @Warmup(iterations = 5)
+  @Warmup(iterations = 3)
   @Measurement(iterations = 8)
   @OutputTimeUnit(TimeUnit.MILLISECONDS)
-  @BenchmarkMode(Array(Mode.Throughput))
+  @BenchmarkMode(Array(Mode.AverageTime))
   def testGetOrElse() :Seq[Int] = {
     generatedOptions.map { x => {
      x.getOrElse(1) }

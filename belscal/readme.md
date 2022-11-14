@@ -14,8 +14,18 @@ java 13 benchmarks
 
 
 [info] Benchmark                                    Mode  Cnt  Score   Error   Units
-[info] MonadicWrappersChecker.testFlatten          thrpt   40  2,631 ´┐Ż 0,058  ops/ms
-[info] MonadicWrappersChecker.testGetOrElse        thrpt   40  2,617 ´┐Ż 0,076  ops/ms
-[info] MonadicWrappersChecker.testIfElse           thrpt   40  3,184 ´┐Ż 0,050  ops/ms
-[info] MonadicWrappersChecker.testPatternMatching  thrpt   40  2,947 ´┐Ż 0,046  ops/ms
+[info] MonadicWrappersChecker.testFlatten          thrpt   40  2,631 ´ 0,058  ops/ms
+[info] MonadicWrappersChecker.testGetOrElse        thrpt   40  2,617 ´ 0,076  ops/ms
+[info] MonadicWrappersChecker.testIfElse           thrpt   40  3,184 ´ 0,050  ops/ms
+[info] MonadicWrappersChecker.testPatternMatching  thrpt   40  2,947 ´ 0,046  ops/ms
+
+[info] MonadicWrappersChecker.testFlatten          thrpt   40  2,686 ´┐Ż 0,033  ops/ms
+[info] MonadicWrappersChecker.testGetOrElse        thrpt   40  2,682 ´┐Ż 0,061  ops/ms
+[info] MonadicWrappersChecker.testIfElse           thrpt   40  3,228 ´┐Ż 0,035  ops/ms
+[info] MonadicWrappersChecker.testPatternMatching  thrpt   40  2,913 ´┐Ż 0,046  ops/ms
+[info] MonadicWrappersChecker.testFlatten           avgt   40  0,374 ´┐Ż 0,009   ms/op
+[info] MonadicWrappersChecker.testGetOrElse         avgt   40  0,369 ´┐Ż 0,002   ms/op
+[info] MonadicWrappersChecker.testIfElse            avgt   40  0,319 ´┐Ż 0,008   ms/op
+[info] MonadicWrappersChecker.testPatternMatching   avgt   40  0,338 ´┐Ż 0,011   ms/op
+
 
