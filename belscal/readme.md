@@ -29,3 +29,8 @@ java 13 benchmarks
 [info] MonadicWrappersChecker.testPatternMatching   avgt   40  0,338 ´┐Ż 0,011   ms/op
 
 
+[info] Benchmark                                                   Mode  Cnt   Score   Error  Units
+[info] MonadicWrappersChecker.testFold                             avgt   40   0,396 ´┐Ż 0,011  ms/op
+[info] MonadicWrappersChecker.testGetOrElse                        avgt   40   0,390 ´┐Ż 0,015  ms/op
+[info] MonadicWrappersChecker.testIfElse                           avgt   40   0,319 ´┐Ż 0,009  ms/op
+[info] MonadicWrappersChecker.testPatternMatching                  avgt   40   0,342 ´┐Ż 0,002  ms/op

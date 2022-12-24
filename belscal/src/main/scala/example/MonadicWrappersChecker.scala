@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit
 
 @State(Scope.Benchmark)
 class MonadicWrappersChecker {
-    val generatedOptions: Seq[Option[Int]] = (1 to 50_000).map { value => {if (value % 2 != 0) Option(value) else None}}
+  val generatedOptions: Seq[Option[Int]] = (1 to 50_000).map { value => {if (value % 2 != 0) Option(value) else None}}
 
   @Benchmark
   @Warmup(iterations = 3)
@@ -15,6 +15,15 @@ class MonadicWrappersChecker {
   @BenchmarkMode(Array(Mode.AverageTime))
   def testFlatten() :Seq[Int] = {
     generatedOptions.flatten
+  }
+
+  @Benchmark
+  @Warmup(iterations = 3)
+  @Measurement(iterations = 8)
+  @OutputTimeUnit(TimeUnit.MILLISECONDS)
+  @BenchmarkMode(Array(Mode.AverageTime))
+  def testFlatMap() :Seq[Int] = {
+    generatedOptions.flatMap(x => x)
   }
 
   @Benchmark
@@ -50,6 +59,17 @@ class MonadicWrappersChecker {
   def testGetOrElse() :Seq[Int] = {
     generatedOptions.map { x => {
      x.getOrElse(1) }
+    }
+  }
+
+  @Benchmark
+  @Warmup(iterations = 3)
+  @Measurement(iterations = 8)
+  @OutputTimeUnit(TimeUnit.MILLISECONDS)
+  @BenchmarkMode(Array(Mode.AverageTime))
+  def testFold() :Seq[Int] = {
+    generatedOptions.map { x => {
+      x.fold(1)(x=>x) }
     }
   }
 
