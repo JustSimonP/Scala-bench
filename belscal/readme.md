@@ -29,7 +29,10 @@ java 13 benchmarks
 [info] MonadicWrappersChecker.testPatternMatching   avgt   40  0,338 ´┐Ż 0,011   ms/op
 
 
-[info] Benchmark                                                   Mode  Cnt   Score   Error  Units
+[info] StringManipulation.testNumericStringRegex               thrpt   40  0,084 ´┐Ż 0,002  ops/ms
+[info] StringManipulation.testNumericStringWithIndexRetrieval  thrpt   40  0,487 ´┐Ż 0,008  ops/ms
+[info] StringManipulation.testSplitString                      thrpt   40  0,141 ´┐Ż 0,001  ops/ms
+
 [info] MonadicWrappersChecker.testFold                             avgt   40   0,396 ´┐Ż 0,011  ms/op
 [info] MonadicWrappersChecker.testGetOrElse                        avgt   40   0,390 ´┐Ż 0,015  ms/op
 [info] MonadicWrappersChecker.testIfElse                           avgt   40   0,319 ´┐Ż 0,009  ms/op
