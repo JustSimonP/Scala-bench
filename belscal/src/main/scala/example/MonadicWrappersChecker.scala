@@ -69,7 +69,7 @@ class MonadicWrappersChecker {
   @BenchmarkMode(Array(Mode.AverageTime))
   def testFold() :Seq[Int] = {
     generatedOptions.map { x => {
-      x.fold(1)(x=>x) }
+      x.fold(1)(_) }
     }
   }
 
