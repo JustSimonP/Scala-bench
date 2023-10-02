@@ -13,7 +13,7 @@ class BigTransformations {
   case class InternalDataPlaceholder(someNumbers: Seq[Int], someText : String, deepObject: DeepDeepDataPlaceholder)
   case class DeepDeepDataPlaceholder(amOrNot: Option[String], dupaString: String)
 
-  case class Dupa(fullName: String, internal: InternalDataPlaceholder)
+  case class Intermediate(fullName: String, internal: InternalDataPlaceholder)
 
   val bigCollectionToTransform: Seq[DataPlaceholder] = (1 to 100000)map {DataPlaceholder(Random.alphanumeric.take(10).toString(), Random.alphanumeric.take(10).toString(), _,
     InternalDataPlaceholder(someNumbers = (1 to 100).map(x => x), Random.alphanumeric.take(10).toString(), deepObject = DeepDeepDataPlaceholder(Some( Random.alphanumeric.take(10).toString()),  Random.alphanumeric.take(10).toString())))}
@@ -26,7 +26,7 @@ class BigTransformations {
   @OutputTimeUnit(TimeUnit.NANOSECONDS)
   @BenchmarkMode(Array(Mode.Throughput))
   def testDefaultTransformations(): Seq[String] = {
-    bigCollectionToTransform.map {placeholder =>  Dupa(fullName = placeholder.firstName+placeholder.lastName + placeholder.age, internal = placeholder.internalObject)}.zipWithIndex.map{case (dupa, index) =>
+    bigCollectionToTransform.map {placeholder =>  Intermediate(fullName = placeholder.firstName+placeholder.lastName + placeholder.age, internal = placeholder.internalObject)}.zipWithIndex.map{case (dupa, index) =>
       val sumOfInts = dupa.internal.someNumbers.sum
       val textValue =  dupa.internal.someText + dupa.fullName + index
       (sumOfInts, textValue, dupa.internal.deepObject)
@@ -42,7 +42,7 @@ class BigTransformations {
   @OutputTimeUnit(TimeUnit.NANOSECONDS)
   @BenchmarkMode(Array(Mode.Throughput))
   def testTransformationWithView(): Seq[String] = {
-    bigCollectionToTransform.view.map { placeholder => Dupa(fullName = placeholder.firstName + placeholder.lastName + placeholder.age, internal = placeholder.internalObject) }.zipWithIndex.map { case (dupa, index) =>
+    bigCollectionToTransform.view.map { placeholder => Intermediate(fullName = placeholder.firstName + placeholder.lastName + placeholder.age, internal = placeholder.internalObject) }.zipWithIndex.map { case (dupa, index) =>
       val sumOfInts = dupa.internal.someNumbers.sum
       val textValue = dupa.internal.someText + dupa.fullName + index
       (sumOfInts, textValue, dupa.internal.deepObject)
@@ -59,7 +59,7 @@ class BigTransformations {
   @OutputTimeUnit(TimeUnit.NANOSECONDS)
   @BenchmarkMode(Array(Mode.Throughput))
   def testTransformationsWithIterator(): Seq[String] = {
-    bigCollectionToTransform.iterator.map { placeholder => Dupa(fullName = placeholder.firstName + placeholder.lastName + placeholder.age, internal = placeholder.internalObject) }.zipWithIndex.map { case (dupa, index) =>
+    bigCollectionToTransform.iterator.map { placeholder => Intermediate(fullName = placeholder.firstName + placeholder.lastName + placeholder.age, internal = placeholder.internalObject) }.zipWithIndex.map { case (dupa, index) =>
       val sumOfInts = dupa.internal.someNumbers.sum
       val textValue = dupa.internal.someText + dupa.fullName + index
       (sumOfInts, textValue, dupa.internal.deepObject)
