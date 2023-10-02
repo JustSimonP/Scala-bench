@@ -1,7 +1,7 @@
 OPENJDK 13
 
 Compiled from "Bench.scala"
-public class example.Bench {
+public class notDefault.Bench {
   public scala.collection.immutable.IndexedSeq<java.lang.Object> methodStandardFilter();
     Code:
        0: getstatic     #40                 // Field scala/runtime/RichInt$.MODULE$:Lscala/runtime/RichInt$;
@@ -173,7 +173,7 @@ public class example.Bench {
        8: iadd
        9: ireturn
 
-  public example.Bench();
+  public notDefault.Bench();
     Code:
        0: aload_0
        1: invokespecial #206                // Method java/lang/Object."<init>":()V
@@ -204,7 +204,7 @@ public class example.Bench {
 =========================================================================================================================================================
 
 Compiled from "MonadicWrappersChecker.scala"
-public class example.MonadicWrappersChecker {
+public class notDefault.MonadicWrappersChecker {
   public scala.collection.immutable.Seq<scala.Option<java.lang.Object>> generatedOptions();
     Code:
        0: aload_0
@@ -322,7 +322,7 @@ public class example.MonadicWrappersChecker {
        9: invokestatic  #131                // Method scala/runtime/BoxesRunTime.unboxToInt:(Ljava/lang/Object;)I
       12: ireturn
 
-  public example.MonadicWrappersChecker();
+  public notDefault.MonadicWrappersChecker();
     Code:
        0: aload_0
        1: invokespecial #169                // Method java/lang/Object."<init>":()V

@@ -1,3 +1,5 @@
+package notDefault
+
 
 import org.openjdk.jmh.annotations._
 
@@ -68,19 +70,19 @@ class BigTransformations {
   }.toSeq
 
 
-  //  @Benchmark
-  //  @Warmup(iterations = 2)
-  //  @Measurement(iterations = 9)
-  //  @OutputTimeUnit(TimeUnit.MILLISECONDS)
-  //  @BenchmarkMode(Array(Mode.Throughput))
-  //  def testTransformationsWithIterable(): Seq[String] = {
-  //    bigCollectionToTransform.map { placeholder => Dupa(fullName = placeholder.firstName + placeholder.lastName + placeholder.age, internal = placeholder.internalObject) }.zipWithIndex.map { case (dupa, index) =>
-  //      val sumOfInts = dupa.internal.someNumbers.sum
-  //      val textValue = dupa.internal.someText + dupa.fullName + index
-  //      (sumOfInts, textValue, dupa.internal.deepObject)
-  //    }.flatMap { case (sum, text, deepobject) =>
-  //      val bigText = sum + text + deepobject.amOrNot.get
-  //      bigText.grouped(2).toSeq
-  //    }
-  //  }
+//    @Benchmark
+//    @Warmup(iterations = 2)
+//    @Measurement(iterations = 9)
+//    @OutputTimeUnit(TimeUnit.MILLISECONDS)
+//    @BenchmarkMode(Array(Mode.Throughput))
+//    def testTransformationsWithIterable(): Seq[String] = {
+//      bigCollectionToTransform.map { placeholder => Dupa(fullName = placeholder.firstName + placeholder.lastName + placeholder.age, internal = placeholder.internalObject) }.zipWithIndex.map { case (dupa, index) =>
+//        val sumOfInts = dupa.internal.someNumbers.sum
+//        val textValue = dupa.internal.someText + dupa.fullName + index
+//        (sumOfInts, textValue, dupa.internal.deepObject)
+//      }.flatMap { case (sum, text, deepobject) =>
+//        val bigText = sum + text + deepobject.amOrNot.get
+//        bigText.grouped(2).toSeq
+//      }
+//    }
 }

@@ -1,6 +1,6 @@
-package example
+package notDefault
 
-import org.openjdk.jmh.annotations.{Benchmark, BenchmarkMode, Measurement, Mode, OutputTimeUnit, Scope, State, Warmup}
+import org.openjdk.jmh.annotations._
 
 import java.util.concurrent.TimeUnit
 
