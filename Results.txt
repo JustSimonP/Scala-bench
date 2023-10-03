@@ -19,3 +19,27 @@
 [info] notDefault.BigTransformations.testTransformationsWithIterator:gc.alloc.rate.norm  avgt   45      2984,000 ±       0,001    B/op
 [info] notDefault.BigTransformations.testTransformationsWithIterator:gc.count            avgt   45      3339,000                counts
 [info] notDefault.BigTransformations.testTransformationsWithIterator:gc.time             avgt   45      2284,000                    ms
+
+
+[info] Benchmark                                                                                   Mode  Cnt         Score         Error   Units
+[info] notDefault.BigTransformations.testDefaultTransformations                                    avgt  500  72264745,447 ± 1337931,209   ns/op
+[info] notDefault.BigTransformations.testDefaultTransformations:gc.alloc.rate                      avgt  500      1053,672 ±      21,946  MB/sec
+[info] notDefault.BigTransformations.testDefaultTransformations:gc.alloc.rate.norm                 avgt  500  78450922,990 ±  215510,119    B/op
+[info] notDefault.BigTransformations.testDefaultTransformations:gc.count                           avgt  500     18663,000                counts
+[info] notDefault.BigTransformations.testDefaultTransformations:gc.time                            avgt  500     56919,000                    ms
+[info] notDefault.BigTransformations.testTransformationWithView                                    avgt  500        42,069 ±       0,172   ns/op
+[info] notDefault.BigTransformations.testTransformationWithView:gc.alloc.rate                      avgt  500      5263,025 ±      21,326  MB/sec
+[info] notDefault.BigTransformations.testTransformationWithView:gc.alloc.rate.norm                 avgt  500       232,000 ±       0,001    B/op
+[info] notDefault.BigTransformations.testTransformationWithView:gc.count                           avgt  500     50787,000                counts
+[info] notDefault.BigTransformations.testTransformationWithView:gc.time                            avgt  500     50013,000                    ms
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut                     avgt  500  68267572,601 ± 1885625,045   ns/op
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:gc.alloc.rate       avgt  500      1124,273 ±      28,546  MB/sec
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:gc.alloc.rate.norm  avgt  500  77926483,235 ±  277566,562    B/op
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:gc.count            avgt  500     17734,000                counts
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:gc.time             avgt  500     65496,000                    ms
+[info] notDefault.BigTransformations.testTransformationsWithIterator                               avgt  500      1313,295 ±       4,544   ns/op
+[info] notDefault.BigTransformations.testTransformationsWithIterator:gc.alloc.rate                 avgt  500      2172,415 ±       6,020  MB/sec
+[info] notDefault.BigTransformations.testTransformationsWithIterator:gc.alloc.rate.norm            avgt  500      2990,400 ±       1,162    B/op
+[info] notDefault.BigTransformations.testTransformationsWithIterator:gc.count                      avgt  500     35949,000                counts
+[info] notDefault.BigTransformations.testTransformationsWithIterator:gc.time                       avgt  500     25092,000                    ms
+
