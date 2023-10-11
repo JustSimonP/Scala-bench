@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit
 @State(Scope.Benchmark)
 class StringManipulation {
 
-  val generatedStrings = (1 to 50_000).map { value => s"here:hrn:dupa:${value + 3256}"}
+  val generatedStrings = (1 to 50000).map { value => s"here:hrn:dupa:${value + 3256}"}
 
   @Benchmark
   @Warmup(iterations = 3)

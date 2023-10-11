@@ -165,3 +165,57 @@
 [info] notDefault.BigTransformations.testTransformationsWithIterator:p0.999                        sample                  23,296             us/op
 [info] notDefault.BigTransformations.testTransformationsWithIterator:p0.9999                       sample                  63,616             us/op
 [info] notDefault.BigTransformations.testTransformationsWithIterator:p1.00                         sample                9895,936             us/op
+
+[info] Benchmark                                                                                     Mode    Cnt         Score     Error   Units
+[info] notDefault.BigTransformations.testDefaultTransformations                                    sample   6128     81859,212 ± 151,115   us/op
+[info] notDefault.BigTransformations.testDefaultTransformations:gc.alloc.rate                      sample     50       904,258 ±   5,405  MB/sec
+[info] notDefault.BigTransformations.testDefaultTransformations:gc.alloc.rate.norm                 sample     50  77772789,864 ± 698,728    B/op
+[info] notDefault.BigTransformations.testDefaultTransformations:gc.count                           sample     50      1319,000            counts
+[info] notDefault.BigTransformations.testDefaultTransformations:gc.time                            sample     50      7955,000                ms
+[info] notDefault.BigTransformations.testDefaultTransformations:p0.00                              sample            77594,624             us/op
+[info] notDefault.BigTransformations.testDefaultTransformations:p0.50                              sample            80609,280             us/op
+[info] notDefault.BigTransformations.testDefaultTransformations:p0.90                              sample            86900,736             us/op
+[info] notDefault.BigTransformations.testDefaultTransformations:p0.95                              sample            88866,816             us/op
+[info] notDefault.BigTransformations.testDefaultTransformations:p0.99                              sample            93023,109             us/op
+[info] notDefault.BigTransformations.testDefaultTransformations:p0.999                             sample           106523,525             us/op
+[info] notDefault.BigTransformations.testDefaultTransformations:p0.9999                            sample           131727,360             us/op
+[info] notDefault.BigTransformations.testDefaultTransformations:p1.00                              sample           131727,360             us/op
+[info] notDefault.BigTransformations.testTransformationWithView                                    sample  13891     36022,777 ±  53,105   us/op
+[info] notDefault.BigTransformations.testTransformationWithView:gc.alloc.rate                      sample     50      2051,119 ±   3,155  MB/sec
+[info] notDefault.BigTransformations.testTransformationWithView:gc.alloc.rate.norm                 sample     50  77629429,245 ±  84,865    B/op
+[info] notDefault.BigTransformations.testTransformationWithView:gc.count                           sample     50      3010,000            counts
+[info] notDefault.BigTransformations.testTransformationWithView:gc.time                            sample     50      6185,000                ms
+[info] notDefault.BigTransformations.testTransformationWithView:p0.00                              sample            34275,328             us/op
+[info] notDefault.BigTransformations.testTransformationWithView:p0.50                              sample            35192,832             us/op
+[info] notDefault.BigTransformations.testTransformationWithView:p0.90                              sample            38535,168             us/op
+[info] notDefault.BigTransformations.testTransformationWithView:p0.95                              sample            39452,672             us/op
+[info] notDefault.BigTransformations.testTransformationWithView:p0.99                              sample            42532,864             us/op
+[info] notDefault.BigTransformations.testTransformationWithView:p0.999                             sample            51514,704             us/op
+[info] notDefault.BigTransformations.testTransformationWithView:p0.9999                            sample            68863,079             us/op
+[info] notDefault.BigTransformations.testTransformationWithView:p1.00                              sample            69730,304             us/op
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut                     sample   7431     67440,865 ± 119,791   us/op
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:gc.alloc.rate       sample     50      1149,448 ±   3,168  MB/sec
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:gc.alloc.rate.norm  sample     50  81447398,786 ± 259,088    B/op
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:gc.count            sample     50      1535,000            counts
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:gc.time             sample     50      9380,000                ms
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:p0.00               sample            64094,208             us/op
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:p0.50               sample            66191,360             us/op
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:p0.90               sample            72351,744             us/op
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:p0.95               sample            74055,680             us/op
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:p0.99               sample            76939,264             us/op
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:p0.999              sample            84425,048             us/op
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:p0.9999             sample           108789,760             us/op
+[info] notDefault.BigTransformations.testTransformationsWithCollectionBreakOut:p1.00               sample           108789,760             us/op
+[info] notDefault.BigTransformations.testTransformationsWithIterator                               sample  11144     44943,952 ±  81,402   us/op
+[info] notDefault.BigTransformations.testTransformationsWithIterator:gc.alloc.rate                 sample     50      1863,437 ±  15,150  MB/sec
+[info] notDefault.BigTransformations.testTransformationsWithIterator:gc.alloc.rate.norm            sample     50  88001302,388 ± 507,574    B/op
+[info] notDefault.BigTransformations.testTransformationsWithIterator:gc.count                      sample     50      1118,000            counts
+[info] notDefault.BigTransformations.testTransformationsWithIterator:gc.time                       sample     50      4110,000                ms
+[info] notDefault.BigTransformations.testTransformationsWithIterator:p0.00                         sample            42991,616             us/op
+[info] notDefault.BigTransformations.testTransformationsWithIterator:p0.50                         sample            44040,192             us/op
+[info] notDefault.BigTransformations.testTransformationsWithIterator:p0.90                         sample            48300,032             us/op
+[info] notDefault.BigTransformations.testTransformationsWithIterator:p0.95                         sample            49610,752             us/op
+[info] notDefault.BigTransformations.testTransformationsWithIterator:p0.99                         sample            54103,245             us/op
+[info] notDefault.BigTransformations.testTransformationsWithIterator:p0.999                        sample            71225,180             us/op
+[info] notDefault.BigTransformations.testTransformationsWithIterator:p0.9999                       sample            93789,553             us/op
+[info] notDefault.BigTransformations.testTransformationsWithIterator:p1.00                         sample            94765,056             us/op
