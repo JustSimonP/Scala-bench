@@ -1,3 +1,6 @@
+sbt 'jmh:run -prof gc '
+
+
 [info] Benchmark                                                                         Mode  Cnt         Score         Error   Units
 [info] notDefault.BigTransformations.testDefaultTransformations                          avgt   45  76289212,275 ± 4245228,683   ns/op
 [info] notDefault.BigTransformations.testDefaultTransformations:gc.alloc.rate            avgt   45      1001,913 ±      68,931  MB/sec

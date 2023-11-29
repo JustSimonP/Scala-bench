@@ -2,6 +2,7 @@ package notDefault
 
 
 import org.openjdk.jmh.annotations._
+import org.openjdk.jmh.infra.Blackhole
 
 import java.util.concurrent.TimeUnit
 import scala.util.Random
@@ -43,15 +44,18 @@ class BigTransformations {
   @Measurement(iterations = 9)
   @OutputTimeUnit(TimeUnit.NANOSECONDS)
   @BenchmarkMode(Array(Mode.Throughput))
-  def testDefaultTransformations(): Seq[String] = {
-    bigCollectionToTransform.map {placeholder =>  Intermediate(fullName = placeholder.firstName+placeholder.lastName + placeholder.age, internal = placeholder.internalObject)}.zipWithIndex.map{case (dupa, index) =>
+  def testDefaultTransformations(blackhole : Blackhole): Seq[String] = {
+    val tempColl = bigCollectionToTransform.map {placeholder =>  Intermediate(fullName = placeholder.firstName+placeholder.lastName + placeholder.age, internal = placeholder.internalObject)}.zipWithIndex.map{case (dupa, index) =>
       val sumOfInts = dupa.internal.someNumbers.sum
       val textValue =  dupa.internal.someText + dupa.fullName + index
       (sumOfInts, textValue, dupa.internal.deepObject)
     }.flatMap{ case (sum, text, deepobject ) =>
       val bigText = sum + text + deepobject.amOrNot.get
       bigText.grouped(2).toSeq
-    }}
+    }
+    blackhole.consume(tempColl)
+    tempColl
+  }
 
 
   @Benchmark
@@ -59,16 +63,19 @@ class BigTransformations {
   @Measurement(iterations = 9)
   @OutputTimeUnit(TimeUnit.NANOSECONDS)
   @BenchmarkMode(Array(Mode.Throughput))
-  def testTransformationWithView(): Seq[String] = {
-    bigCollectionToTransform.view.map { placeholder => Intermediate(fullName = placeholder.firstName + placeholder.lastName + placeholder.age, internal = placeholder.internalObject) }.zipWithIndex.map { case (dupa, index) =>
+  def testTransformationWithView(blackhole : Blackhole): Seq[String] = {
+    val tempColl = bigCollectionToTransform.view.map { placeholder => Intermediate(fullName = placeholder.firstName + placeholder.lastName + placeholder.age, internal = placeholder.internalObject) }.zipWithIndex.map { case (dupa, index) =>
       val sumOfInts = dupa.internal.someNumbers.sum
       val textValue = dupa.internal.someText + dupa.fullName + index
       (sumOfInts, textValue, dupa.internal.deepObject)
     }.flatMap { case (sum, text, deepobject) =>
       val bigText = sum + text + deepobject.amOrNot.get
       bigText.grouped(2).toSeq
-    }
-  }.toSeq
+    }.toSeq
+
+    blackhole.consume(tempColl)
+    tempColl
+  }
 
 
   @Benchmark
@@ -76,16 +83,19 @@ class BigTransformations {
   @Measurement(iterations = 9)
   @OutputTimeUnit(TimeUnit.NANOSECONDS)
   @BenchmarkMode(Array(Mode.Throughput))
-  def testTransformationsWithIterator(): Seq[String] = {
-    bigCollectionToTransform.iterator.map { placeholder => Intermediate(fullName = placeholder.firstName + placeholder.lastName + placeholder.age, internal = placeholder.internalObject) }.zipWithIndex.map { case (dupa, index) =>
+  def testTransformationsWithIterator(blackhole : Blackhole): Seq[String] = {
+    val tempColl = bigCollectionToTransform.iterator.map { placeholder => Intermediate(fullName = placeholder.firstName + placeholder.lastName + placeholder.age, internal = placeholder.internalObject) }.zipWithIndex.map { case (dupa, index) =>
       val sumOfInts = dupa.internal.someNumbers.sum
       val textValue = dupa.internal.someText + dupa.fullName + index
       (sumOfInts, textValue, dupa.internal.deepObject)
     }.flatMap { case (sum, text, deepobject) =>
       val bigText = sum + text + deepobject.amOrNot.get
       bigText.grouped(2).toSeq
-    }
-  }.toSeq
+    }.toSeq
+
+    blackhole.consume(tempColl)
+    tempColl
+  }
 
 
 //    @Benchmark
@@ -93,8 +103,8 @@ class BigTransformations {
 //    @Measurement(iterations = 9)
 //    @OutputTimeUnit(TimeUnit.MILLISECONDS)
 //    @BenchmarkMode(Array(Mode.Throughput))
-//    def testTransformationsWithIterable(): Seq[String] = {
-//      bigCollectionToTransform.map { placeholder => Dupa(fullName = placeholder.firstName + placeholder.lastName + placeholder.age, internal = placeholder.internalObject) }.zipWithIndex.map { case (dupa, index) =>
+//    def testTransformationsWithIterable(blackhole : Blackhole): Seq[String] = {
+//      val tempColl = bigCollectionToTransform.map { placeholder => Dupa(fullName = placeholder.firstName + placeholder.lastName + placeholder.age, internal = placeholder.internalObject) }.zipWithIndex.map { case (dupa, index) =>
 //        val sumOfInts = dupa.internal.someNumbers.sum
 //        val textValue = dupa.internal.someText + dupa.fullName + index
 //        (sumOfInts, textValue, dupa.internal.deepObject)
@@ -102,5 +112,7 @@ class BigTransformations {
 //        val bigText = sum + text + deepobject.amOrNot.get
 //        bigText.grouped(2).toSeq
 //      }
+  //    blackhole.consume(tempColl)
+  //    tempColl
 //    }
 }
