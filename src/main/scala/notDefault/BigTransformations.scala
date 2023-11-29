@@ -19,6 +19,24 @@ class BigTransformations {
     InternalDataPlaceholder(someNumbers = (1 to 100).map(x => x), Random.alphanumeric.take(10).toString(), deepObject = DeepDeepDataPlaceholder(Some( Random.alphanumeric.take(10).toString()),  Random.alphanumeric.take(10).toString())))}
 
 
+  @Benchmark
+  @Warmup(iterations = 2)
+  @Measurement(iterations = 9)
+  @OutputTimeUnit(TimeUnit.NANOSECONDS)
+  @BenchmarkMode(Array(Mode.Throughput))
+  def testTransformationsImperatively(): collection.mutable.Seq[String] = {
+    var index = 0
+    var imperativeSeq = collection.mutable.Seq[String]()
+    while (index < bigCollectionToTransform.size) {
+      val element = bigCollectionToTransform.apply(index)
+      val inter = Intermediate(fullName = element.firstName + element.lastName + element.age, internal = element.internalObject)
+      val sumOfInts = inter.internal.someNumbers.sum
+      val textValue = inter.internal.someText + inter.fullName + index
+      val bigText = sumOfInts + textValue + inter.internal.deepObject.amOrNot.get
+      imperativeSeq.prependedAll(bigText.grouped(2))
+    }
+      imperativeSeq
+  }
 
   @Benchmark
   @Warmup(iterations = 2)
